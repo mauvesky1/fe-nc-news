@@ -8,7 +8,6 @@ class Nav extends React.Component {
   };
 
   render() {
-    console.log(this.state.navToggle);
     return (
       <div>
         <div>

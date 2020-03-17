@@ -10,6 +10,7 @@ function ArticlesCards(props) {
       </p>
       <p>Author: {props.author}</p>
       <p>Comment count: {props.comment_count}</p>
+      <p>Created_at:{props.created_at}</p>
     </li>
   );
 }

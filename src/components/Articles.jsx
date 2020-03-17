@@ -18,6 +18,7 @@ class Articles extends React.Component {
     return (
       <ul>
         {this.state.articles.map(article => {
+          console.log(article);
           return (
             <ArticlesCard
               id={article.article_id}
@@ -25,6 +26,7 @@ class Articles extends React.Component {
               votes={article.votes}
               title={article.title}
               comment_count={article.comment_count}
+              created_at={article.created_at}
             />
           );
         })}

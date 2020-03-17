@@ -16,3 +16,9 @@ export const fetchSingleArticle = article_id => {
     `https://be-northcoders-news.herokuapp.com/api/articles/${article_id}`
   );
 };
+
+export const fetchComments = id => {
+  return axios.get(
+    `https://be-northcoders-news.herokuapp.com/api/articles/${id}/comments`
+  );
+};
