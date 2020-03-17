@@ -9,7 +9,7 @@ class Articles extends React.Component {
     isLoading: true
   };
   componentDidMount = () => {
-    api.fetch().then(data => {
+    api.fetchAllArticles().then(data => {
       this.setState({ articles: data.articles });
     });
   };

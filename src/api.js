@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 
-export const fetch = topic => {
+export const fetchAllArticles = topic => {
   return axios
     .get("https://be-northcoders-news.herokuapp.com/api/articles", {
       params: { topic }
@@ -9,4 +9,10 @@ export const fetch = topic => {
     .then(({ data }) => {
       return data;
     });
+};
+
+export const fetchSingleArticle = article_id => {
+  return axios.get(
+    `https://be-northcoders-news.herokuapp.com/api/articles/${article_id}`
+  );
 };
