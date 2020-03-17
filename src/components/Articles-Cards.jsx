@@ -10,9 +10,11 @@ function ArticlesCards(props) {
       </p>
       <p>Author: {props.author}</p>
       <p>Comment count: {props.comment_count}</p>
-      <p>Created_at:{props.created_at}</p>
+      <p>Created_at: {new Date(props.created_at).toString().slice(0, 16)}</p>
     </li>
   );
 }
+// moment -> 15 days ago
+// javascript date objects
 
 export default ArticlesCards;

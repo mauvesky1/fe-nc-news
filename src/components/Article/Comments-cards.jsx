@@ -2,8 +2,6 @@ import React from "react";
 import styles from "./Comments-cards.module.css";
 
 function CommentsCards(props) {
-  console.log("YOU ARE HERE", props.comments[0]);
-
   return (
     <ul>
       {props.comments.map(comment => {
@@ -12,7 +10,7 @@ function CommentsCards(props) {
             <p>
               {comment.body} {comment.author} {comment.votes}
             </p>
-            {comment.created_at}
+            Written: {new Date(comment.created_at).toString().slice(0, 16)}
           </li>
         );
       })}

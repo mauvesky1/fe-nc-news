@@ -17,14 +17,16 @@ class Nav extends React.Component {
 
           <button
             onClick={e => {
-              this.setState({ navToggle: !this.state.navToggle });
+              this.setState(currentState => {
+                return { navToggle: !currentState.navToggle };
+              });
             }}
           >
             Topics
           </button>
         </div>
         {this.state.navToggle && (
-          <div className={styles.topicsMenu}>
+          <div>
             <Link to="/topics/coding">
               <button className="topicsMenu">Coding</button>
             </Link>

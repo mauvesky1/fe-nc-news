@@ -5,7 +5,8 @@ import Header from "./components/Header";
 import Nav from "./components/Nav/Nav-bar";
 import Articles from "./components/Articles";
 import Topics from "./components/Topic-page";
-import SingleArticle from "./components/single-article";
+import SingleArticle from "./components/Article/single-article";
+import ErrorPage from "./components/Error-page";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Articles path="/" className="Articles" />
         <Topics path="/topics/:topic" />
         <SingleArticle path="articles/:article_id" />
+        <ErrorPage default msg="Page Not Found" status="404" />
       </Router>
     </div>
   );
