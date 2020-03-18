@@ -1,7 +1,7 @@
 import React from "react";
 
 import ArticlesCard from "./Articles-Cards";
-import * as api from "../api";
+import * as api from "../../api";
 
 class Articles extends React.Component {
   state = {
@@ -18,7 +18,6 @@ class Articles extends React.Component {
     return (
       <ul>
         {this.state.articles.map(article => {
-          console.log(article);
           return (
             <ArticlesCard
               id={article.article_id}

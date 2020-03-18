@@ -1,4 +1,5 @@
 import React from "react";
+import VoteButton from "../Votes-button";
 import styles from "./Comments-cards.module.css";
 
 function CommentsCards(props) {
@@ -8,9 +9,17 @@ function CommentsCards(props) {
         return (
           <li className={styles.listItems} key={comment.comment_id}>
             <p>
-              {comment.body} {comment.author} {comment.votes}
+              {comment.body}
+
+              <p> Written by:{comment.author} </p>
+
+              <VoteButton
+                votes={comment.votes}
+                cardType="comments"
+                id={comment.comment_id}
+              />
             </p>
-            Written: {new Date(comment.created_at).toString().slice(0, 16)}
+            Written on: {new Date(comment.created_at).toString().slice(0, 16)}
           </li>
         );
       })}

@@ -3,6 +3,7 @@ import * as api from "../../api";
 import CommentsCards from "./Comments-cards";
 import AddComment from "./Add-comment";
 import ErrorPage from "../Error-page";
+import VoteButton from "../Votes-button";
 
 class SingleArticle extends React.Component {
   state = {
@@ -57,7 +58,11 @@ class SingleArticle extends React.Component {
       <div>
         <h2>{article.title}</h2>
         <p>{article.body}</p>
-        <button>Upvote:{article.votes}</button>
+        <VoteButton
+          votes={article.votes}
+          cardType="articles"
+          id={article.article_id}
+        />
         <p>Author: {article.author}</p>
         <p>Comment Count: {article.comment_count}</p>{" "}
         <button

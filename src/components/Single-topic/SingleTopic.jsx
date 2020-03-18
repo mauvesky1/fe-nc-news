@@ -1,41 +1,41 @@
 import React from "react";
-import ArticlesCard from "./Articles-Cards";
+import * as api from "../../api";
+import ArticlesCard from "../Articles/Articles-Cards";
 
-import * as api from "../api";
-
-class Topics extends React.Component {
+class SingleTopic extends React.Component {
   state = {
-    articles: [],
     isLoading: true,
-    topicsList: ["coding", "football"]
+    articles: []
   };
-
   componentDidMount = () => {
     api.fetchAllArticles(this.props.topic).then(data => {
-      this.setState({ articles: data.articles, isLoading: false });
+      this.setState({ articles: data.articles });
     });
   };
 
   render() {
+    const { topic, path } = this.props;
     return (
-      <div>
-        <p>{this.state.topicsList}</p>
+      <>
+        <p>THIS is fine {topic}</p>
         <ul>
           {this.state.articles.map(article => {
             return (
               <ArticlesCard
+                path={path}
                 id={article.article_id}
                 author={article.author}
                 votes={article.votes}
                 title={article.title}
                 comment_count={article.comment_count}
+                created_at={article.created_at}
               />
             );
           })}
         </ul>
-      </div>
+      </>
     );
   }
 }
 
-export default Topics;
+export default SingleTopic;

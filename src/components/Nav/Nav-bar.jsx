@@ -9,30 +9,20 @@ class Nav extends React.Component {
 
   render() {
     return (
-      <div>
+      <>
         <div>
-          <Link to="/">
+          <Link to="/articles">
             <button>All Articles</button>{" "}
           </Link>
 
-          <button
-            onClick={e => {
-              this.setState(currentState => {
-                return { navToggle: !currentState.navToggle };
-              });
-            }}
-          >
-            Topics
-          </button>
+          <Link to="/">
+            <button>Topics</button>{" "}
+          </Link>
+          <Link to="/">
+            <button>Post an article </button>{" "}
+          </Link>
         </div>
-        {this.state.navToggle && (
-          <div>
-            <Link to="/topics/coding">
-              <button className="topicsMenu">Coding</button>
-            </Link>
-          </div>
-        )}
-      </div>
+      </>
     );
   }
 }
