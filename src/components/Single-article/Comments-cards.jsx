@@ -1,5 +1,6 @@
 import React from "react";
 import VoteButton from "../Votes-button";
+import DeleteComment from "../Delete-button";
 import styles from "./Comments-cards.module.css";
 
 function CommentsCards(props) {
@@ -11,7 +12,16 @@ function CommentsCards(props) {
             <p>
               {comment.body}
 
-              <p> Written by:{comment.author} </p>
+              <p>
+                {console.log(props, "this is hte props", comment.author)}
+                Written by:{comment.author}{" "}
+                {comment.author === props.username ? (
+                  <DeleteComment
+                    forceAnUpdate={props.forceAnUpdate}
+                    id={comment.comment_id}
+                  />
+                ) : null}{" "}
+              </p>
 
               <VoteButton
                 votes={comment.votes}

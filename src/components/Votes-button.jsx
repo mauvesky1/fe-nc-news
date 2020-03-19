@@ -32,15 +32,18 @@ class VoteButton extends React.Component {
     const { voteDifference, error } = this.state;
 
     return (
-      <div>
-        {error !== false && <p>Error. Could not vote</p>}
-        <p>
-          Votes: {this.props.votes + voteDifference}
-          <button disabled={voteDifference !== 0} onClick={this.handleClick}>
-            Vote
-          </button>
-        </p>
-      </div>
+      <>
+        {" "}
+        {error !== false ? <p>Error. Could not vote</p> : null}
+        <div>
+          <p>
+            Votes: {this.props.votes + voteDifference}
+            <button disabled={voteDifference !== 0} onClick={this.handleClick}>
+              Vote
+            </button>
+          </p>
+        </div>
+      </>
     );
   }
 }

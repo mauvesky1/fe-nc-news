@@ -3,14 +3,10 @@ import axios from "axios";
 
 const baseURL = "https://be-northcoders-news.herokuapp.com/api";
 
-export const fetchAllArticles = topic => {
-  return axios
-    .get(`${baseURL}/articles`, {
-      params: { topic }
-    })
-    .then(({ data }) => {
-      return data;
-    });
+export const fetchAllArticles = (topic, sort_by, order_by) => {
+  return axios.get(`${baseURL}/articles`, {
+    params: { topic, order_by, sort_by }
+  });
 };
 
 export const fetchSingleArticle = article_id => {
@@ -27,4 +23,13 @@ export const fetchAllTopics = () => {
 
 export const patchVote = (cardType, id) => {
   return axios.patch(`${baseURL}/${cardType}/${id}`, { inc_votes: 1 });
+};
+
+export const postComment = (username, body, id) => {
+  return axios.post(`${baseURL}/articles/${id}/comments`, { username, body });
+};
+
+export const deleteComment = id => {
+  console.log(id, "this is hte api speaking");
+  return axios.delete(`${baseURL}/comments/${id}`);
 };

@@ -11,7 +11,16 @@ class SingleArticle extends React.Component {
     isLoading: true,
     comments: [],
     toggleComments: false,
-    hasError: false
+    hasError: false,
+    toggleAddForm: false
+  };
+
+  activateAddComment = e => {
+    this.setState({ toggleAddForm: true });
+  };
+
+  forceAnUpdate = () => {
+    this.setState({ toggleAddForm: false });
   };
 
   showComments = () => {
@@ -45,7 +54,8 @@ class SingleArticle extends React.Component {
       isLoading,
       comments,
       toggleComments,
-      hasError
+      hasError,
+      toggleAddForm
     } = this.state;
 
     if (isLoading) {
@@ -72,8 +82,21 @@ class SingleArticle extends React.Component {
         >
           {toggleComments ? "Hide Comments" : "Show Comments"}
         </button>
-        {toggleComments ? <CommentsCards comments={comments} /> : null}
-        <AddComment />
+        <button onClick={this.activateAddComment}>Add Comment</button>
+        {console.log(this.props)}
+        {toggleAddForm && (
+          <AddComment
+            user={this.props.user}
+            article_id={this.props.article_id}
+          />
+        )}
+        {toggleComments ? (
+          <CommentsCards
+            comments={comments}
+            username={this.props.username}
+            forceAnUpdate={this.forceAnUpdate}
+          />
+        ) : null}
       </div>
     );
   }
