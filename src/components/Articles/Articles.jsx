@@ -39,7 +39,7 @@ class Articles extends React.Component {
   };
 
   render() {
-    if (this.state.isLoading) return <p>loading..</p>;
+    if (this.state.isLoading) return <h3>loading..</h3>;
     return (
       <>
         <SortForm

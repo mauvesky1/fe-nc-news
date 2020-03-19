@@ -18,7 +18,7 @@ class Topics extends React.Component {
   };
 
   render() {
-    if (this.state.isLoading) return <p> LOADING</p>;
+    if (this.state.isLoading) return <h3> Loading</h3>;
 
     return (
       <div>

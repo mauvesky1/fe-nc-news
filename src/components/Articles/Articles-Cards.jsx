@@ -14,7 +14,7 @@ function ArticlesCards(props) {
       <p>
         <VoteButton votes={props.votes} cardType="articles" id={props.id} />
       </p>
-      <p>Created_at: {new Date(props.created_at).toString().slice(0, 16)} </p>
+      <p>Created on: {new Date(props.created_at).toString().slice(0, 16)} </p>
     </li>
   );
 }

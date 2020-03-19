@@ -34,7 +34,7 @@ class VoteButton extends React.Component {
     return (
       <>
         {" "}
-        {error !== false ? <p>Error. Could not vote</p> : null}
+        {error ? <p>Error. Could not vote</p> : null}
         <div>
           <p>
             Votes: {this.props.votes + voteDifference}

@@ -20,9 +20,16 @@ class SingleArticle extends React.Component {
     this.setState({ toggleAddForm: true });
   };
 
-  forceAnUpdate = () => {
-    this.setState({
-      toggleAddForm: false
+  filterComments = id => {
+    console.log("this is the id", id);
+
+    this.setState(currentState => {
+      console.log(currentState.comments[0]);
+      return {
+        comments: currentState.comments.filter(comment => {
+          return comment.comment_id !== id;
+        })
+      };
     });
   };
 
@@ -48,18 +55,17 @@ class SingleArticle extends React.Component {
   };
 
   componentDidMount = () => {
-    api.fetchSingleArticle(this.props.article_id).then(({ data }) => {
-      if (data.article === undefined) {
-        this.setState({ hasError: true, isLoading: false });
-      }
-      this.setState({ article: data.article, isLoading: false });
-    });
-  };
-
-  componentDidUpdate = (prevProps, prevState) => {
-    if (prevState.comments.length !== this.state.comments.length) {
-      //when adding a comment
-    }
+    api
+      .fetchSingleArticle(this.props.article_id)
+      .then(({ data }) => {
+        if (data.article === undefined) {
+          this.setState({ hasError: true, isLoading: false });
+        }
+        this.setState({ article: data.article, isLoading: false });
+      })
+      .catch(err => {
+        this.setState({ isLoading: false, hasError: err });
+      });
   };
 
   render() {
@@ -75,7 +81,7 @@ class SingleArticle extends React.Component {
     if (isLoading) {
       return <h3>loading 123...</h3>;
     }
-    if (hasError === true) {
+    if (hasError) {
       return <ErrorPage status={hasError.response.status} msg={hasError.msg} />;
     }
     return (
@@ -90,10 +96,8 @@ class SingleArticle extends React.Component {
         <p>Author: {article.author}</p>
         <p>
           Comment Count:{" "}
-          {article.comment_count > comments.length
-            ? article.comment_count
-            : comments.length}
-        </p>{" "}
+          {comments.length === 0 ? article.comment_count : comments.length}
+        </p>
         <button
           onClick={e => {
             this.showComments();
@@ -101,7 +105,9 @@ class SingleArticle extends React.Component {
         >
           {toggleComments ? "Hide Comments" : "Show Comments"}
         </button>
-        <button onClick={this.activateAddComment}>Add Comment</button>
+        {toggleComments && (
+          <button onClick={this.activateAddComment}>Add Comment</button>
+        )}
         {toggleAddForm && (
           <AddComment
             username={this.props.username}
@@ -111,6 +117,7 @@ class SingleArticle extends React.Component {
         )}
         {toggleComments ? (
           <CommentsCards
+            filterComments={this.filterComments}
             comments={comments}
             username={this.props.username}
             forceAnUpdate={this.forceAnUpdate}

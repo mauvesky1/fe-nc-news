@@ -8,6 +8,7 @@ import Topics from "./components/Topics/Topics";
 import SingleArticle from "./components/Single-article/single-article";
 import SingleTopic from "./components/Single-topic/SingleTopic";
 import ErrorPage from "./components/Error-page";
+import styles from "./App.css";
 
 class App extends React.Component {
   state = {
@@ -36,12 +37,12 @@ class App extends React.Component {
   };
   render() {
     return (
-      <div className="App">
-        <Header className="App-Header" />
+      <div>
+        <Header />
 
-        <Nav app={this.state} handleClick={this.handleClick} className="Nav" />
+        <Nav app={this.state} handleClick={this.handleClick} />
         <Router>
-          <Articles className="Main" path="/articles" />
+          <Articles path="/articles" />
           <Topics path="/" />
           <SingleTopic path="topics/:topic" />
           <SingleArticle

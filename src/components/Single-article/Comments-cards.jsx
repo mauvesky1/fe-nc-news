@@ -8,7 +8,7 @@ function CommentsCards(props) {
     <ul>
       {props.comments.map(comment => {
         return (
-          <li className={styles.listItems} key={comment.comment_id}>
+          <li key={comment.comment_id}>
             <p>
               {comment.body}
 
@@ -16,7 +16,7 @@ function CommentsCards(props) {
                 Written by:{comment.author}{" "}
                 {comment.author === props.username ? (
                   <DeleteComment
-                    forceAnUpdate={props.forceAnUpdate}
+                    filterComments={props.filterComments}
                     id={comment.comment_id}
                   />
                 ) : null}{" "}

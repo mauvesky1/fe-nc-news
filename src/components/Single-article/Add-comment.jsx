@@ -21,7 +21,7 @@ class AddComment extends React.Component {
   handleInput = e => {
     this.setState({ inputValue: e.target.value });
   };
-
+  //disable submit button once pressed.
   render() {
     if (this.props.username === "") return <p>Please Log in</p>;
     return (

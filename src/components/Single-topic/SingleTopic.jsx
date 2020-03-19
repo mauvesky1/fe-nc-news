@@ -35,7 +35,7 @@ class SingleTopic extends React.Component {
 
   render() {
     const { topic, path } = this.props;
-    if (this.state.isLoading) return <p>Loading...</p>;
+    if (this.state.isLoading) return <h3>Loading...</h3>;
     return (
       <>
         <>
