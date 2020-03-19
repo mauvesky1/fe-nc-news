@@ -30,6 +30,5 @@ export const postComment = (username, body, id) => {
 };
 
 export const deleteComment = id => {
-  console.log(id, "this is hte api speaking");
   return axios.delete(`${baseURL}/comments/${id}`);
 };

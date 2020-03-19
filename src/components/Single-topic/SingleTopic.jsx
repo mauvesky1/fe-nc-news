@@ -8,6 +8,15 @@ class SingleTopic extends React.Component {
     isLoading: true,
     articles: []
   };
+
+  toggleIsLoading = () => {
+    this.setState({ isLoading: true });
+  };
+
+  updateList = articles => {
+    this.setState({ articles: articles, isLoading: false });
+  };
+
   clickHandler = e => {
     e.preventDefault();
 
@@ -30,6 +39,7 @@ class SingleTopic extends React.Component {
       <>
         <>
           {" "}
+          {/* <SortForm /> */}
           Sort by:
           <form onSubmit={this.clickHandler}>
             <label>

@@ -83,10 +83,9 @@ class SingleArticle extends React.Component {
           {toggleComments ? "Hide Comments" : "Show Comments"}
         </button>
         <button onClick={this.activateAddComment}>Add Comment</button>
-        {console.log(this.props)}
         {toggleAddForm && (
           <AddComment
-            user={this.props.user}
+            username={this.props.username}
             article_id={this.props.article_id}
           />
         )}

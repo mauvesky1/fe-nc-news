@@ -23,7 +23,7 @@ class App extends React.Component {
   };
   handleClick = e => {
     this.setState(currentState => {
-      // error handling to stop people logging in as Jess etc.
+      // error handling so people only sign in as jess etc.
       if (this.state.toggleLogIn === true) {
         return this.basestate;
       } else {
@@ -38,7 +38,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header className="App-Header" />
-        {!this.state.toggleLogIn ? (
+        {/* {!this.state.toggleLogIn ? (
           <div>
             <input
               value={this.state.inputValue}
@@ -51,9 +51,9 @@ class App extends React.Component {
             <h3>Logged in as {this.state.username}</h3>
             <button onClick={this.handleClick}>Log out</button>
           </div>
-        )}
+        )} */}
 
-        <Nav className="Nav" />
+        <Nav app={this.state} handleClick={this.handleClick} className="Nav" />
         <Router>
           <Articles className="Main" path="/articles" />
           <Topics path="/" />

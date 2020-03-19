@@ -14,15 +14,15 @@ class AddComment extends React.Component {
     // if (this.state.inputValue.length <= 2) {
     //   this.setState((rejection: true));
     // }
-    const { user, article_id } = this.props;
-    console.log(
-      user,
-      "in the add comment",
-      this.state.inputValue,
-      "the last item is the id",
-      article_id
-    );
-    api.postComment(user, this.state.inputValue, article_id);
+    const { username, article_id } = this.props;
+    // console.log(
+    //   username,
+    //   "in the add comment",
+    //   this.state.inputValue,
+    //   "the last item is the id",
+    //   article_id
+    // );
+    api.postComment(username, this.state.inputValue, article_id);
     // axios request with comment
   };
 
@@ -31,10 +31,10 @@ class AddComment extends React.Component {
   };
 
   render() {
-    if (this.props.user === "") return <p>Please Log in</p>;
+    if (this.props.username === "") return <p>Please Log in</p>;
     return (
       <form onSubmit={this.handleSubmit}>
-        <p>Posting as user: {this.props.user}</p>
+        <p>Posting as username: {this.props.username}</p>
         <textarea
           value={this.state.inputVale}
           onChange={this.handleInput}

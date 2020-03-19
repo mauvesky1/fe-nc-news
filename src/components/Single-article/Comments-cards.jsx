@@ -13,7 +13,6 @@ function CommentsCards(props) {
               {comment.body}
 
               <p>
-                {console.log(props, "this is hte props", comment.author)}
                 Written by:{comment.author}{" "}
                 {comment.author === props.username ? (
                   <DeleteComment

@@ -1,12 +1,20 @@
 import React from "react";
-
 import ArticlesCard from "./Articles-Cards";
+import SortForm from "./Sort-form";
 import * as api from "../../api";
 
 class Articles extends React.Component {
   state = {
     articles: [],
     isLoading: true
+  };
+
+  toggleIsLoading = () => {
+    this.setState({ isLoading: true });
+  };
+
+  updateList = articles => {
+    this.setState({ articles: articles, isLoading: false });
   };
 
   clickHandler = e => {
@@ -21,22 +29,27 @@ class Articles extends React.Component {
 
   // componentDidUpdate = (prevProps, prevState) => {
   //   if (prevState.articles != this.state.articles) {
-  //     console.log("hurrah");
+  //     console.log("");
   //   }
   // };
   componentDidMount = () => {
     api.fetchAllArticles().then(({ data }) => {
-      this.setState({ articles: data.articles });
+      this.setState({ articles: data.articles, isLoading: false });
     });
   };
 
   render() {
+    if (this.state.isLoading) return <p>is loading..</p>;
     return (
       <>
+        <SortForm
+          updateList={this.updateList}
+          toggleIsLoading={this.toggleIsLoading}
+        />
         <>
           {" "}
           Sort by:
-          <form onSubmit={this.clickHandler}>
+          {/* <form onSubmit={this.clickHandler}>
             <label>
               <input id="Votes" type="radio" name="sort" value="votes" /> Votes{" "}
             </label>
@@ -57,7 +70,7 @@ class Articles extends React.Component {
               </label>
               <button>Submit</button>
             </div>
-          </form>
+          </form> */}
         </>
         <ul>
           {this.state.articles.map(article => {
