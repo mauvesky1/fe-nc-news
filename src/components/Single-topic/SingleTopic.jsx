@@ -29,34 +29,21 @@ class SingleTopic extends React.Component {
 
   componentDidMount = () => {
     api.fetchAllArticles(this.props.topic).then(({ data }) => {
-      this.setState({ articles: data.articles });
+      this.setState({ articles: data.articles, isLoading: false });
     });
   };
 
   render() {
     const { topic, path } = this.props;
+    if (this.state.isLoading) return <p>Loading...</p>;
     return (
       <>
         <>
           {" "}
-          {/* <SortForm /> */}
-          Sort by:
-          <form onSubmit={this.clickHandler}>
-            <label>
-              <input id="Votes" type="radio" name="sort" value="votes" /> Votes{" "}
-            </label>
-            <label>
-              <input type="radio" name="sort" value="created_at" /> Created at
-            </label>
-            In order:
-            <label>
-              <input type="radio" name="order" value="asc" /> Ascending{" "}
-            </label>
-            <label>
-              <input type="radio" name="order" value="desc" /> Descending{" "}
-            </label>
-            <button>Submit</button>
-          </form>
+          <SortForm
+            updateList={this.updateList}
+            toggleIsLoading={this.toggleIsLoading}
+          />
         </>
 
         <ul>

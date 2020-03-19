@@ -39,39 +39,14 @@ class Articles extends React.Component {
   };
 
   render() {
-    if (this.state.isLoading) return <p>is loading..</p>;
+    if (this.state.isLoading) return <p>loading..</p>;
     return (
       <>
         <SortForm
           updateList={this.updateList}
           toggleIsLoading={this.toggleIsLoading}
         />
-        <>
-          {" "}
-          Sort by:
-          {/* <form onSubmit={this.clickHandler}>
-            <label>
-              <input id="Votes" type="radio" name="sort" value="votes" /> Votes{" "}
-            </label>
-            <label>
-              <input type="radio" name="sort" value="created_at" /> Created at
-            </label>
-            <label>
-              <input type="radio" name="sort" value="comment_count" /> No. of
-              Comments
-            </label>
-            <div>
-              In order:
-              <label>
-                <input type="radio" name="order" value="asc" /> Ascending{" "}
-              </label>
-              <label>
-                <input type="radio" name="order" value="desc" /> Descending{" "}
-              </label>
-              <button>Submit</button>
-            </div>
-          </form> */}
-        </>
+
         <ul>
           {this.state.articles.map(article => {
             return (

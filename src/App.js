@@ -38,20 +38,6 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header className="App-Header" />
-        {/* {!this.state.toggleLogIn ? (
-          <div>
-            <input
-              value={this.state.inputValue}
-              onChange={this.handleInput}
-            ></input>{" "}
-            <button onClick={this.handleClick}>Log in</button>
-          </div>
-        ) : (
-          <div>
-            <h3>Logged in as {this.state.username}</h3>
-            <button onClick={this.handleClick}>Log out</button>
-          </div>
-        )} */}
 
         <Nav app={this.state} handleClick={this.handleClick} className="Nav" />
         <Router>
@@ -62,6 +48,7 @@ class App extends React.Component {
             username={this.state.username}
             path="articles/:article_id"
           />
+          {/* // path=articles/new */}
           <ErrorPage default msg="Page Not Found" status="404" />
         </Router>
       </div>

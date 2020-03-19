@@ -12,7 +12,8 @@ class SingleArticle extends React.Component {
     comments: [],
     toggleComments: false,
     hasError: false,
-    toggleAddForm: false
+    toggleAddForm: false,
+    addCommentCounter: 0
   };
 
   activateAddComment = e => {
@@ -20,7 +21,19 @@ class SingleArticle extends React.Component {
   };
 
   forceAnUpdate = () => {
-    this.setState({ toggleAddForm: false });
+    this.setState({
+      toggleAddForm: false
+    });
+  };
+
+  updateComments = comment => {
+    this.setState(currentState => {
+      return {
+        toggleAddForm: !currentState.toggleAddForm,
+        comments: [comment, ...currentState.comments],
+        addCommentCounter: currentState.addCommentCounter + 1
+      };
+    });
   };
 
   showComments = () => {
@@ -48,6 +61,7 @@ class SingleArticle extends React.Component {
       //when adding a comment
     }
   };
+
   render() {
     const {
       article,
@@ -59,7 +73,7 @@ class SingleArticle extends React.Component {
     } = this.state;
 
     if (isLoading) {
-      return <p>loading 123...</p>;
+      return <h3>loading 123...</h3>;
     }
     if (hasError === true) {
       return <ErrorPage status={hasError.response.status} msg={hasError.msg} />;
@@ -74,7 +88,12 @@ class SingleArticle extends React.Component {
           id={article.article_id}
         />
         <p>Author: {article.author}</p>
-        <p>Comment Count: {article.comment_count}</p>{" "}
+        <p>
+          Comment Count:{" "}
+          {article.comment_count > comments.length
+            ? article.comment_count
+            : comments.length}
+        </p>{" "}
         <button
           onClick={e => {
             this.showComments();
@@ -87,6 +106,7 @@ class SingleArticle extends React.Component {
           <AddComment
             username={this.props.username}
             article_id={this.props.article_id}
+            updateComments={this.updateComments}
           />
         )}
         {toggleComments ? (

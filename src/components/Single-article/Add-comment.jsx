@@ -2,28 +2,20 @@ import React from "react";
 import { render } from "@testing-library/react";
 import * as api from "../../api";
 
-// import styles from
-// function AddComment(props) {
 class AddComment extends React.Component {
   state = {
     inputValue: ""
   };
   handleSubmit = e => {
     e.preventDefault();
-    //errors
-    // if (this.state.inputValue.length <= 2) {
-    //   this.setState((rejection: true));
-    // }
+
     const { username, article_id } = this.props;
-    // console.log(
-    //   username,
-    //   "in the add comment",
-    //   this.state.inputValue,
-    //   "the last item is the id",
-    //   article_id
-    // );
-    api.postComment(username, this.state.inputValue, article_id);
-    // axios request with comment
+
+    api
+      .postComment(username, this.state.inputValue, article_id)
+      .then(({ data }) => {
+        this.props.updateComments(data.comment);
+      });
   };
 
   handleInput = e => {

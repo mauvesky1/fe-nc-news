@@ -4,28 +4,26 @@ import * as api from "../../api";
 // to be used on the lists of all articles and list of articles in topic pages.
 // invoke with path so it knows where it is and set the right state.
 
-const clickHandler = (e, updateList, toggleIsLoading) => {
-  toggleIsLoading();
-  e.preventDefault();
-
-  api
-    .fetchAllArticles(undefined, e.target.sort.value, e.target.order.value)
-    .then(({ data }) => {
-      console.log(data.articles);
-      updateList(data.articles);
-      // call a method to update state.
-    });
-};
-
 function SortForm({ updateList, toggleIsLoading }) {
-  console.log(toggleIsLoading);
+  const clickHandler = e => {
+    e.preventDefault();
+    toggleIsLoading();
+
+    api
+      .fetchAllArticles(undefined, e.target.sort.value, e.target.order.value)
+      .then(({ data }) => {
+        updateList(data.articles);
+        // call a method to update state.
+      });
+  };
+
   return (
     <>
       {" "}
       Sort by:
       <form
         onSubmit={e => {
-          clickHandler(e, updateList, toggleIsLoading);
+          clickHandler(e);
         }}
       >
         <label>
@@ -33,6 +31,10 @@ function SortForm({ updateList, toggleIsLoading }) {
         </label>
         <label>
           <input type="radio" name="sort" value="created_at" /> Created at
+        </label>
+        <label>
+          <input type="radio" name="sort" value="comment_count" /> No. of
+          Comments
         </label>
         In order:
         <label>
