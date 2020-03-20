@@ -3,9 +3,9 @@ import axios from "axios";
 
 const baseURL = "https://be-northcoders-news.herokuapp.com/api";
 
-export const fetchAllArticles = (topic, sort_by, order_by) => {
+export const fetchAllArticles = (topic, sort_by, order_by, p) => {
   return axios.get(`${baseURL}/articles`, {
-    params: { topic, order_by, sort_by }
+    params: { topic, order_by, sort_by, p }
   });
 };
 

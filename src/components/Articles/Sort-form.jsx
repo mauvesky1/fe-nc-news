@@ -8,13 +8,7 @@ function SortForm({ updateList, toggleIsLoading }) {
   const clickHandler = e => {
     e.preventDefault();
     toggleIsLoading();
-
-    api
-      .fetchAllArticles(undefined, e.target.sort.value, e.target.order.value)
-      .then(({ data }) => {
-        updateList(data.articles);
-        // call a method to update state.
-      });
+    updateList(e.target.sort.value, e.target.order.value);
   };
 
   return (
