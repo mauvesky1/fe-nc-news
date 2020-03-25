@@ -1,5 +1,6 @@
 import React from "react";
 import * as api from "../api";
+import Button from "react-bootstrap/Button";
 
 class VoteButton extends React.Component {
   state = {
@@ -38,7 +39,11 @@ class VoteButton extends React.Component {
         <div>
           <p>
             Votes: {this.props.votes + voteDifference}
-            <button disabled={voteDifference !== 0} onClick={this.handleClick}>
+            <button
+              className={Button}
+              disabled={voteDifference !== 0}
+              onClick={this.handleClick}
+            >
               Vote
             </button>
           </p>

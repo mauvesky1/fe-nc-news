@@ -1,6 +1,6 @@
 import React from "react";
-import ArticlesCard from "./Articles-Cards";
 import SortForm from "./Sort-form";
+import ArticlesList from "./Articles-Cards";
 import * as api from "../../api";
 
 class Articles extends React.Component {
@@ -47,6 +47,7 @@ class Articles extends React.Component {
     }
   };
   componentDidMount = () => {
+    // this.setState({ isLoading: false });
     api.fetchAllArticles().then(({ data }) => {
       this.setState({
         articles: data.articles,
@@ -64,20 +65,7 @@ class Articles extends React.Component {
           updateList={this.updateList}
           toggleIsLoading={this.toggleIsLoading}
         />
-        <ul>
-          {this.state.articles.map(article => {
-            return (
-              <ArticlesCard
-                id={article.article_id}
-                author={article.author}
-                votes={article.votes}
-                title={article.title}
-                comment_count={article.comment_count}
-                created_at={article.created_at}
-              />
-            );
-          })}
-        </ul>
+        <ArticlesList articles={this.state.articles} />
         Current Page:{this.state.page}
         <button
           disabled={this.state.page === 1}

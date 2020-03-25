@@ -3,15 +3,18 @@ import { Link } from "@reach/router";
 import styles from "./Nav.module.css";
 
 class Nav extends React.Component {
+  state = {};
   render() {
-    // needs changing from class
     return (
       <>
+        {this.props.app.hasError && (
+          <> {this.props.app.errMsg} is not a valid username </>
+        )}
         {!this.props.app.toggleLogIn && (
           <div>
             <input
-              value={this.props.app.inputValue}
-              onChange={this.props.app.handleInput}
+              defaultValue={this.props.app.inputValue}
+              onChange={this.props.handleInput}
             ></input>{" "}
             <button onClick={this.props.handleClick}>Log in</button>
           </div>

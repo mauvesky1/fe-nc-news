@@ -15,7 +15,7 @@ class DeleteComment extends React.Component {
         // invoke function to rerender cards.
         //
         console.log(this.props, "here");
-        this.props.filterComments(this.props.id);
+        this.props.removeComment(this.props.id);
       })
       .catch(err => {
         console.log(err);

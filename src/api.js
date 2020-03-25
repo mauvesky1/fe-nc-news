@@ -32,3 +32,10 @@ export const postComment = (username, body, id) => {
 export const deleteComment = id => {
   return axios.delete(`${baseURL}/comments/${id}`);
 };
+
+export const checkUser = username => {
+  return axios.get(`${baseURL}/users/${username}`).then(res => {
+    console.log(res);
+    return res;
+  });
+};

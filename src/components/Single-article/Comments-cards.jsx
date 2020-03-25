@@ -16,7 +16,7 @@ function CommentsCards(props) {
                 Written by:{comment.author}{" "}
                 {comment.author === props.username ? (
                   <DeleteComment
-                    filterComments={props.filterComments}
+                    removeComment={props.removeComment}
                     id={comment.comment_id}
                   />
                 ) : null}{" "}

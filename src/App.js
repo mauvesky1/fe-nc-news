@@ -9,38 +9,60 @@ import SingleArticle from "./components/Single-article/single-article";
 import SingleTopic from "./components/Single-topic/SingleTopic";
 import ErrorPage from "./components/Error-page";
 import styles from "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import * as api from "./api";
 
 class App extends React.Component {
   state = {
     username: "",
     inputValue: "jessjelly",
-    toggleLogIn: false
+    toggleLogIn: false,
+    isLoading: false,
+    hasError: false,
+    errorMsg: ""
   };
   basestate = this.state;
+
   handleInput = e => {
+    console.log("hdsdfjdsfljsdlfjfd");
     const textInput = e.target.value;
 
     this.setState({ inputValue: textInput });
   };
   handleClick = e => {
-    this.setState(currentState => {
-      // error handling so people only sign in as jess etc.
-      if (this.state.toggleLogIn === true) {
-        return this.basestate;
-      } else {
-        return {
-          username: currentState.inputValue,
-          toggleLogIn: !currentState.toggleLogIn
-        };
-      }
-    });
+    if (this.state.toggleLogIn === true) {
+      return this.setState(this.basestate);
+    } else {
+      this.setState({ isLoading: true });
+      api
+        .checkUser(this.state.inputValue)
+        .then(res => {
+          this.setState(currentState => {
+            return {
+              username: currentState.inputValue,
+              toggleLogIn: !currentState.toggleLogIn,
+              isLoading: false,
+              hasError: false
+            };
+          });
+        })
+        .catch(err => {
+          this.setState(currentState => {
+            return { hasError: true, errMsg: currentState.inputValue };
+          });
+        });
+    }
   };
   render() {
     return (
       <div>
         <Header />
 
-        <Nav app={this.state} handleClick={this.handleClick} />
+        <Nav
+          app={this.state}
+          handleClick={this.handleClick}
+          handleInput={this.handleInput}
+        />
         <Router>
           <Articles path="/articles" />
           <Topics path="/" />

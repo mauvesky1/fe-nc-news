@@ -20,7 +20,7 @@ class SingleArticle extends React.Component {
     this.setState({ toggleAddForm: true });
   };
 
-  filterComments = id => {
+  removeComment = id => {
     console.log("this is the id", id);
 
     this.setState(currentState => {
@@ -55,15 +55,14 @@ class SingleArticle extends React.Component {
   };
 
   componentDidMount = () => {
+    console.log(this.props);
     api
       .fetchSingleArticle(this.props.article_id)
       .then(({ data }) => {
-        if (data.article === undefined) {
-          this.setState({ hasError: true, isLoading: false });
-        }
         this.setState({ article: data.article, isLoading: false });
       })
       .catch(err => {
+        console.log("in the catch");
         this.setState({ isLoading: false, hasError: err });
       });
   };
@@ -117,7 +116,7 @@ class SingleArticle extends React.Component {
         )}
         {toggleComments ? (
           <CommentsCards
-            filterComments={this.filterComments}
+            removeComment={this.removeComment}
             comments={comments}
             username={this.props.username}
             forceAnUpdate={this.forceAnUpdate}
