@@ -2,7 +2,7 @@ import React from "react";
 import { Router } from "@reach/router";
 import "./App.css";
 import Header from "./components/Header";
-import Nav from "./components/Nav/Nav-bar";
+import Navibar from "./components/Nav/Nav-bar";
 import Articles from "./components/Articles/Articles";
 import Topics from "./components/Topics/Topics";
 import SingleArticle from "./components/Single-article/single-article";
@@ -19,35 +19,35 @@ class App extends React.Component {
     toggleLogIn: false,
     isLoading: false,
     hasError: false,
-    errorMsg: ""
+    errorMsg: "",
   };
   basestate = this.state;
 
-  handleInput = e => {
+  handleInput = (e) => {
     console.log("hdsdfjdsfljsdlfjfd");
     const textInput = e.target.value;
 
     this.setState({ inputValue: textInput });
   };
-  handleClick = e => {
+  handleClick = (e) => {
     if (this.state.toggleLogIn === true) {
       return this.setState(this.basestate);
     } else {
       this.setState({ isLoading: true });
       api
         .checkUser(this.state.inputValue)
-        .then(res => {
-          this.setState(currentState => {
+        .then((res) => {
+          this.setState((currentState) => {
             return {
               username: currentState.inputValue,
               toggleLogIn: !currentState.toggleLogIn,
               isLoading: false,
-              hasError: false
+              hasError: false,
             };
           });
         })
-        .catch(err => {
-          this.setState(currentState => {
+        .catch((err) => {
+          this.setState((currentState) => {
             return { hasError: true, errMsg: currentState.inputValue };
           });
         });
@@ -58,7 +58,7 @@ class App extends React.Component {
       <div>
         <Header />
 
-        <Nav
+        <Navibar
           app={this.state}
           handleClick={this.handleClick}
           handleInput={this.handleInput}

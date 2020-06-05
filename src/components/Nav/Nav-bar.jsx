@@ -1,12 +1,13 @@
 import React from "react";
 import { Link } from "@reach/router";
 import styles from "./Nav.module.css";
+import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
 
-class Nav extends React.Component {
+class Navibar extends React.Component {
   state = {};
   render() {
     return (
-      <>
+      <Container>
         {this.props.app.hasError && (
           <> {this.props.app.errMsg} is not a valid username </>
         )}
@@ -37,8 +38,8 @@ class Nav extends React.Component {
             <button>Post an article </button>{" "}
           </Link>
         </div>
-      </>
+      </Container>
     );
   }
 }
-export default Nav;
+export default Navibar;
