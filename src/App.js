@@ -56,8 +56,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <Header />
-
         <Navibar
           app={this.state}
           handleClick={this.handleClick}

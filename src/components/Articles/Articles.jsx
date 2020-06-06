@@ -2,6 +2,7 @@ import React from "react";
 import SortForm from "./Sort-form";
 import ArticlesList from "./Articles-Cards";
 import * as api from "../../api";
+import styles from "./Articles.module.css";
 
 class Articles extends React.Component {
   state = {
@@ -10,11 +11,11 @@ class Articles extends React.Component {
     page: 1,
     total_count: 0,
     sort_by: undefined,
-    order_by: undefined
+    order_by: undefined,
   };
 
-  changePage = direction => {
-    this.setState(currentState => {
+  changePage = (direction) => {
+    this.setState((currentState) => {
       if (currentState.page)
         return { page: currentState.page + direction, isLoading: true };
     });
@@ -28,7 +29,7 @@ class Articles extends React.Component {
     this.setState({
       sort_by: sort_value,
       order_by: order_value,
-      isLoading: false
+      isLoading: false,
     });
   };
 
@@ -52,7 +53,7 @@ class Articles extends React.Component {
       this.setState({
         articles: data.articles,
         isLoading: false,
-        total_count: data.total_count
+        total_count: data.total_count,
       });
     });
   };
@@ -66,23 +67,25 @@ class Articles extends React.Component {
           toggleIsLoading={this.toggleIsLoading}
         />
         <ArticlesList articles={this.state.articles} />
-        Current Page:{this.state.page}
-        <button
-          disabled={this.state.page === 1}
-          onClick={e => {
-            return this.changePage(-1);
-          }}
-        >
-          Previous page
-        </button>
-        <button
-          disabled={Math.ceil(this.state.total_count / 10) <= this.state.page}
-          onClick={e => {
-            return this.changePage(1);
-          }}
-        >
-          Next page
-        </button>
+        <div>
+          Current Page:{this.state.page}
+          <button
+            disabled={this.state.page === 1}
+            onClick={(e) => {
+              return this.changePage(-1);
+            }}
+          >
+            Previous page
+          </button>
+          <button
+            disabled={Math.ceil(this.state.total_count / 10) <= this.state.page}
+            onClick={(e) => {
+              return this.changePage(1);
+            }}
+          >
+            Next page
+          </button>
+        </div>
       </>
     );
   }

@@ -1,12 +1,7 @@
-.login {
-  grid-area: b;
-  background-color: teal;
-  align-self: center;
-}
-
-.navButtons {
-  background-color: rgba(0, 0, 0, 0.356);
-  grid-area: c;
-  border: 20px;
-  align-self: center;
+.navibar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 4px solid var(--orange-yellow);
+  background-color: powderblue;
 }
