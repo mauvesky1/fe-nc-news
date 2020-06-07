@@ -1,4 +1,9 @@
-*notes*
+*notes
+
+  <Link to="/articles/new">
+            <button>Post an article </button>{" "}
+          </Link>
+*
 state.json
 
 node_modules# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.

@@ -16,9 +16,6 @@ class Navibar extends React.Component {
           <Link to="/">
             <button>Topics</button>{" "}
           </Link>
-          <Link to="/articles/new">
-            <button>Post an article </button>{" "}
-          </Link>
         </div>
         <div className={styles.logIn}>
           {this.props.app.hasError && (
