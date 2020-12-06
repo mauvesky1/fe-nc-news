@@ -10,6 +10,7 @@ function ArticlesList(props) {
       <h2>Hello</h2>
       <ul>
         {props.articles.map((article) => {
+          
           return (
             <li key={article.article_id}>
               <p>
@@ -20,13 +21,13 @@ function ArticlesList(props) {
               </p>
               <p>Author: {article.author}</p>
               <p>Number of comments: {article.comment_count}</p>
-              <p>
+              <div>
                 <VoteButton
                   votes={article.votes}
                   cardType="articles"
-                  id={article.id}
+                  id={article.article_id}
                 />
-              </p>
+              </div>
               <p>
                 Created on:{" "}
                 {new Date(article.created_at).toString().slice(0, 16)}{" "}

@@ -13,6 +13,7 @@ class VoteButton extends React.Component {
   };
   increaseVotes = () => {
     const { cardType, id } = this.props;
+    // eslint-disable-next-line no-restricted-globals
 
     api.patchVote(cardType, id).catch(err => {
       this.setState(currentState => {
