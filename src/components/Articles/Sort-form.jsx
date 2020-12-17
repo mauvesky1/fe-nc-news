@@ -37,7 +37,7 @@ class SortForm extends React.Component {
                 });
               }}
               name="sort"
-              value="votes"
+              
             />{" "}
             Votes{" "}
           </label>
@@ -51,7 +51,7 @@ class SortForm extends React.Component {
               }}
               type="radio"
               name="sort"
-              value="created_at"
+              
             />{" "}
             Created at
           </label>
