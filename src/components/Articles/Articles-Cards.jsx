@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "@reach/router";
 import styles from "./Articles-Cards.module.css";
 import VoteButton from "../Votes-button";
-import SortForm from "./Sort-form";
+// import SortForm from "./Sort-form";
 
 function ArticlesList(props) {
   return (

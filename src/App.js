@@ -1,14 +1,14 @@
 import React from "react";
 import { Router } from "@reach/router";
 import "./App.css";
-import Header from "./components/Header";
+// import Header from "./components/Header";
 import Navibar from "./components/Nav/Nav-bar";
 import Articles from "./components/Articles/Articles";
 import Topics from "./components/Topics/Topics";
 import SingleArticle from "./components/Single-article/single-article";
 import SingleTopic from "./components/Single-topic/SingleTopic";
 import ErrorPage from "./components/Error-page";
-import styles from "./App.css";
+ // import styles from "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as api from "./api";
 

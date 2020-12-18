@@ -2,7 +2,7 @@ import React from "react";
 import SortForm from "./Sort-form";
 import ArticlesList from "./Articles-Cards";
 import * as api from "../../api";
-import styles from "./Articles.module.css";
+// import styles from "./Articles.module.css";
 
 class Articles extends React.Component {
   state = {

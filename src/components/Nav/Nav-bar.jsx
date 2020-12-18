@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 import styles from "./Nav.module.css";
-import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
+// import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
 
 class Navibar extends React.Component {
   state = {};

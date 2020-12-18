@@ -1,5 +1,5 @@
 import React from "react";
-import * as api from "../../api";
+// import * as api from "../../api";
 
 class SortForm extends React.Component {
   state = {
@@ -66,7 +66,7 @@ class SortForm extends React.Component {
               }}
               type="radio"
               name="sort"
-              value="comment_count"
+         
             />
             {"   "}
             No. of Comments
@@ -82,7 +82,7 @@ class SortForm extends React.Component {
               }}
               type="radio"
               name="order"
-              value="asc"
+       
             />{" "}
             Ascending{" "}
           </label>
@@ -96,7 +96,7 @@ class SortForm extends React.Component {
               }}
               type="radio"
               name="order"
-              value="desc"
+
             />{" "}
             Descending{" "}
           </label>
